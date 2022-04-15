@@ -97,6 +97,12 @@
               CHI TIẾT
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" id="sinhnhat_page" href="nhanvien/checksn.php">
+              <span data-feather="gift"></span>
+              THỐNG KÊ SINH NHẬT 
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
