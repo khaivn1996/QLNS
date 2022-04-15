@@ -1,7 +1,13 @@
 <?php
 	include('../dbconnect.php');
 ?>
-<?php 
-	$result = mysqli_query($con,"UPDATE NHANVIEN SET HoNV='".$_POST['HoNVm']."',TenNV='".$_POST['TenNVm']."',GioiTinh='".$_POST['GioiTinhm']."',NgaySinh='".$_POST['NgaySinhm']."',DiaChi='".$_POST['DiaChim']."',DienThoai='".$_POST['DienThoaim']."',MaDV='".$_POST['MaDVm']."' WHERE MaNV='".$_POST['MaNVm']."'");
-	
+<?php
+	if ($_POST['ThoiViecs']=='true') {
+		$chks=1;
+	}else{
+		$chks=0;
+	}
+	$slll = "UPDATE NHANVIEN SET HoNV='".$_POST['HoNVs']."',TenNV='".$_POST['TenNVs']."',GioiTinh='".$_POST['GioiTinhs']."',NgaySinh='".$_POST['NgaySinhs']."',DiaChi='".$_POST['DiaChis']."',DienThoai='".$_POST['DienThoais']."',ThoiViec=".$chks.",MaDV='".$_POST['MaDVs']."' WHERE MaNV='".$_POST['MaNVs']."'";
+	$result = mysqli_query($con,$slll);
+	echo $slll;
 ?>

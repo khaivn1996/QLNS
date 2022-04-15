@@ -10,6 +10,7 @@ include('../dbconnect.php');
 	    $output['NgaySinhm'] = $row['NgaySinh'];
 	    $output['DiaChim'] = $row['DiaChi'];
 	    $output['DienThoaim'] = $row['DienThoai'];
+	    $output['ThoiViecm'] = $row['ThoiViec'];
 	    $output['MaDVm'] = $row['MaDV'];
 	}
 	echo json_encode($output);

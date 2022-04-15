@@ -119,6 +119,7 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 								<div class="valid-feedback">Valid.</div>
 		      					<div class="invalid-feedback">Please fill out this field.</div>
 							</div>
+
 							<div class="col-md-3">
 								<label for="browser">Đơn Vị</label>
 								<select class="form-control" name="MaDV" id="MaDV">
@@ -205,6 +206,12 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 			      	<label>Điện Thoại</label>
 					<input type="text" class="form-control" name="DienThoaim" id="DienThoaim">
 		      	</div>
+
+		      	<div class="form-group">
+					<label>Thôi Việc (có check) - Đang làm việc (không check)</label>
+					<input class="form-check-input" type="checkbox" name="ThoiViecm" id="ThoiViecm">
+				</div>
+
 		      	<div class="form-group">
 			      	<label for="browser">Đơn Vị</label>
 					<select class="form-control" name="MaDVm" id="MaDVm">
@@ -230,11 +237,6 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 	    </form>
 	  </div>
 	</div>
-
-<!--<script type="text/javascript">
-  function myFunction() {
-  location.replace("<?php echo $HomeURL; ?>/nhanvien/index.php")
-}-->
 </script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -247,8 +249,26 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 					method: "POST",
 					success:function(data){
 						$('#load_NV').html(data);
-						$('#tbl_loadNV').DataTable({
-							"lengthMenu": [ 10, 15, 20, 25, 50, 75, 100, 1000 ]
+						
+						$('#tbl_loadNV tfoot th p').each(function(){
+							var title = $(this).text();
+							$(this).html('<input type="text" style="width: 60px;" />');
+						});
+						var table = $('#tbl_loadNV').DataTable({
+						initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            });
+        		}	
 						});
 					}
 				});
@@ -304,21 +324,31 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 						$('#NgaySinhm').val(data.NgaySinhm);
 						$('#DiaChim').val(data.DiaChim);
 						$('#DienThoaim').val(data.DienThoaim);
+						$('#ThoiViecm').val(data.ThoiViecm);
 						$('#MaDVm').val(data.MaDVm);
-						console.log(data);
+						console.log($('#ThoiViecm').val(data.ThoiViecm));
 					}
 				});
 			});
 			//Xu ly code update
 			$('#edit_nhanvien').on('submit',function(event){
 				event.preventDefault();
+				var MaNVs = $('#MaNVm').val();
+				var HoNVs = $('#HoNVm').val();
+				var TenNVs = $('#TenNVm').val();
+				var GioiTinhs = $('#GioiTinhm').val();
+				var NgaySinhs = $('#NgaySinhm').val();
+				var DiaChis = $('#DiaChim').val();
+				var DienThoais = $('#DienThoaim').val();
+				var ThoiViecs = $('#ThoiViecm').is(":checked");	
+				var MaDVs = $('#MaDVm').val();
 				if ($('#MaNV').val()=='') {
 					swal("Cảnh báo","Vui lòng điền thông tin nhập liệu","error");
 				}else {
 					$.ajax({
 						url: "<?php echo $HomeURL; ?>/nhanvien/ajax_sua.php",
 						method: "POST",
-						data:$('#edit_nhanvien').serialize(),
+						data:{MaNVs:MaNVs,HoNVs:HoNVs,TenNVs:TenNVs,GioiTinhs:GioiTinhs,NgaySinhs:NgaySinhs,DiaChis:DiaChis,DienThoais:DienThoais,ThoiViecs:ThoiViecs,MaDVs:MaDVs},
 						success:function(data){
 							console.log(data);
 							$('#edit_Modal').modal('hide');
@@ -370,7 +400,7 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 			//Xuất Excel
 			$('#xuate').on('click',function(){
 				$("#tbl_loadNV").table2excel({
-			    exclude: ".btn",
+			    exclude: "#btn",
 			    name: "NHANVIEN",
 			    filename: "NhanVien_" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
 			    fileext: ".xls",

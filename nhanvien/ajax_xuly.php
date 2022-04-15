@@ -10,7 +10,7 @@
 		$DiaChi = $_POST['DiaChi'];
 		$DienThoai = $_POST['DienThoai'];	
 		$MaDV = $_POST['MaDV'];
-		$result_INSERT = mysqli_query($con,"INSERT INTO NHANVIEN(MaNV,HoNV,TenNV,GioiTinh,NgaySinh,DiaChi,DienThoai,MaDV) VALUES ('$MaNV','$HoNV','$TenNV','$GioiTinh','$NgaySinh','$DiaChi',$DienThoai,'$MaDV')");
+		$result_INSERT = mysqli_query($con,"INSERT INTO NHANVIEN(MaNV,HoNV,TenNV,GioiTinh,NgaySinh,DiaChi,DienThoai,ThoiViec,MaDV) VALUES ('$MaNV','$HoNV','$TenNV','$GioiTinh','$NgaySinh','$DiaChi',$DienThoai,0,'$MaDV')");
 		if ($result_INSERT) {
 			echo 1;
 		}else {
@@ -40,10 +40,11 @@
 					<th>Ngày sinh</th>
 					<th>Địa chỉ</th>
 					<th>Điện thoại</th>
+					<th>Thôi Việc</th>
 					<th>Đơn vị</th>
-					<th class="btn">Thao tác</th>
+					<th>Thao tác</th>
 				</tr>
-			</thead>
+			</thead><tbody>
 	';
 	if (mysqli_num_rows($sql)>0) {
 		while ($row = mysqli_fetch_array($sql)) {
@@ -57,8 +58,9 @@
 						<td class="NS" data-id4='.$row['MaNV'].'>'.$row['NgaySinh'].'</td>
 						<td class="DC" data-id5='.$row['MaNV'].'>'.$row['DiaChi'].'</td>
 						<td class="DT" data-id6='.$row['MaNV'].'>'.$row['DienThoai'].'</td>
-						<td class="MDV" data-id7='.$row['MaNV'].'>'.$row['TenDV'].'</td>
-						<td class="btn"><button data-id9='.$row['MaNV'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id8='.$row['MaNV'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
+						<td class="TV" data-id10='.$row['MaNV'].'>'.$row['ThoiViec'].'</td>
+						<td class="MDV" data-id7='.$row['MaNV'].'>'.$row['TenDV'].'</td>					
+						<td id="btn"><button data-id9='.$row['MaNV'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id8='.$row['MaNV'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
 					</tr>
 			';		    
 		}
@@ -67,14 +69,27 @@
 		$output.='
 			<tbody>
 				<tr>
-					<td colspan="10"><center>Dữ liệu chưa có</center></td>
+					<td colspan="11"><center>Dữ liệu chưa có</center></td>
 				</tr>
 			</tbody>
 		';
 	}
-	$output.='		
-			<tbody>
-			</tbody>
+	$output.='</tbody>		
+			<tfoot>
+				<tr>
+					<th></th>
+					<th><p>Mã số nhân viên</p></th>
+					<th><p>Họ nhân viên</p></th>
+					<th><p>Tên nhân viên</p></th>
+					<th><p>Giới tính</p></th>
+					<th><p>Ngày sinh</p></th>
+					<th><p>Địa chỉ</p></th>
+					<th><p>Điện thoại</p></th>
+					<th><p>Thôi Việc</p></th>
+					<th><p>Đơn vị</p></th>
+					<th></th>
+				</tr>
+			</tfoot>
 		</table>
 	';
 	echo $output;
