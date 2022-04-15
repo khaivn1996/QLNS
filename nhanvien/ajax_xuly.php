@@ -41,7 +41,7 @@
 					<th>Địa chỉ</th>
 					<th>Điện thoại</th>
 					<th>Đơn vị</th>
-					<th>Thao tác</th>
+					<th class="btn">Thao tác</th>
 				</tr>
 			</thead>
 	';
@@ -50,15 +50,15 @@
 			$output.='
 					<tr>
 						<td>'.$i++.'</td>
-						<td >'.$row['MaNV'].'</td>
-						<td class="Ho" data-id1='.$row['MaNV'].' contenteditable>'.$row['HoNV'].'</td>
-						<td class="TenNV" data-id2='.$row['MaNV'].' contenteditable>'.$row['TenNV'].'</td>
-						<td class="GT" data-id3='.$row['MaNV'].' contenteditable>'.$row['GioiTinh'].'</td>
-						<td class="NS" data-id4='.$row['MaNV'].' contenteditable>'.$row['NgaySinh'].'</td>
-						<td class="DC" data-id5='.$row['MaNV'].' contenteditable>'.$row['DiaChi'].'</td>
-						<td class="DT" data-id6='.$row['MaNV'].' contenteditable>'.$row['DienThoai'].'</td>
-						<td class="MDV" data-id7='.$row['MaNV'].' contenteditable>'.$row['TenDV'].'</td>
-						<td><button data-id9='.$row['MaNV'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id8='.$row['MaNV'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
+						<td>'.$row['MaNV'].'</td>
+						<td class="Ho" data-id1='.$row['MaNV'].'>'.$row['HoNV'].'</td>
+						<td class="TenNV" data-id2='.$row['MaNV'].'>'.$row['TenNV'].'</td>
+						<td class="GT" data-id3='.$row['MaNV'].'>'.$row['GioiTinh'].'</td>
+						<td class="NS" data-id4='.$row['MaNV'].'>'.$row['NgaySinh'].'</td>
+						<td class="DC" data-id5='.$row['MaNV'].'>'.$row['DiaChi'].'</td>
+						<td class="DT" data-id6='.$row['MaNV'].'>'.$row['DienThoai'].'</td>
+						<td class="MDV" data-id7='.$row['MaNV'].'>'.$row['TenDV'].'</td>
+						<td class="btn"><button data-id9='.$row['MaNV'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id8='.$row['MaNV'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
 					</tr>
 			';		    
 		}
@@ -67,7 +67,7 @@
 		$output.='
 			<tbody>
 				<tr>
-					<td colspan="6"><center>Dữ liệu chưa có</center></td>
+					<td colspan="10"><center>Dữ liệu chưa có</center></td>
 				</tr>
 			</tbody>
 		';

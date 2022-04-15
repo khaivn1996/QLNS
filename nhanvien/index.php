@@ -1,6 +1,7 @@
 <?php
-    session_start();
+    session_start();    
 ?>
+
 <?php include('../dbconnect.php'); ?>
 <?php include('../admin/permission.php'); ?>
 <?php 
@@ -51,6 +52,7 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
   <script src="res/BS5/jquery/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="res/BS5/css/jquery.dataTables.css"> 
 	<script type="text/javascript" charset="utf8" src="res/BS5/js/jquery.dataTables.js"></script>
+	<script src="res/BS5/jquery/jquery.table2excel.min.js"></script>
  	<!-- Bootstrap core CSS -->
  	<link href="res/BS5/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
@@ -146,6 +148,7 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 			<div class="card">
 					<div class="card-header">
 						<center><h3><b>THÔNG TIN NHÂN VIÊN</b></h3></center>
+						<input type="button" id="xuate" name="xuate" class="btn btn-success" value="Xuất Excel">
 					</div>
 					<div class="card-body" id="load_NV">				
 					</div>
@@ -363,6 +366,16 @@ $query_donvi = mysqli_query($con,$truyvanMaDV);
 						}
 					});
 				}
+			});
+			//Xuất Excel
+			$('#xuate').on('click',function(){
+				$("#tbl_loadNV").table2excel({
+			    exclude: ".btn",
+			    name: "NHANVIEN",
+			    filename: "NhanVien_" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+			    fileext: ".xls",
+					preserveColors: true
+			  });
 			});
 		});
 	</script>

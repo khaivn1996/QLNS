@@ -264,7 +264,7 @@ $querysql = mysqli_query($con,$truyvanMaBC);
 				$("#tbl_loadBC").table2excel({
 			    exclude: ".noExl",
 			    name: "Worksheet Name",
-			    filename: "SomeFile" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+			    filename: "BANGCAP_" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
 			    fileext: ".xls",
 					preserveColors: true
 			  });

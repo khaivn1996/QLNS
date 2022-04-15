@@ -29,7 +29,7 @@
 					<th>STT</th>
 					<th>Mã Bằng Cấp</th>
 					<th>Tên Bằng Cấp</th>
-					<th class="noExl">Thao tác</th>
+					<th>Thao tác</th>
 				</tr>
 			</thead>
 	';
@@ -40,7 +40,7 @@
 						<td>'.$i++.'</td>
 						<td >'.$row['MaBC'].'</td>
 						<td class="TenBC" data-id1='.$row['MaBC'].' contenteditable>'.$row['TenBC'].'</td>
-						<td class="noExl"><button data-id2='.$row['MaBC'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id3='.$row['MaBC'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
+						<td><button data-id2='.$row['MaBC'].' class="btn btn-sm btn-warning edit_data" name="edit_data" >Sửa</button>	<button data-id3='.$row['MaBC'].' class="btn btn-sm btn-danger del_data" name="delete_data" >Xóa</button></td>
 					</tr>
 			';		    
 		}
