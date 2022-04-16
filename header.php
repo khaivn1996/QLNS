@@ -31,7 +31,7 @@
 <!--Menu-->
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="overflow-y: auto;">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -101,6 +101,32 @@
             <a class="nav-link" id="sinhnhat_page" href="nhanvien/checksn.php">
               <span data-feather="gift"></span>
               THỐNG KÊ SINH NHẬT 
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>CHẤM CÔNG - TÍNH LƯƠNG</span>
+          <a class="link-secondary" href="#">
+          <span data-feather="dollar-sign"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" id="danhmuc_page" href="chucvu/index.php">
+              <span data-feather="user"></span>
+              CHỨC VỤ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="cap_page" href="chamcong/index.php">
+              <span data-feather="clock"></span>
+              CHẤM CÔNG
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chitiet_page" href="tinhluong/index.php">
+              <span data-feather="dollar-sign"></span>
+              TÍNH LƯƠNG
             </a>
           </li>
         </ul>

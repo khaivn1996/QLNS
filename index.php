@@ -50,6 +50,7 @@ $truyvansotheNV = mysqli_query($con,$laysotheNV);
         <li>Quản lý Danh Mục Khen Thưởng - Kỷ Luật</li>
         <li>Quản lý Cấp Khen Thưởng - Kỷ Luật</li>
         <li>Quản lý Chi Tiết Khen Thưởng - Kỷ Luật</li>
+        <li>Quản lý Chấm Công - Tính Lương Hằng Tháng</li>
       </div>
       <?php include('footer.html'); ?>
 <script src="res/BS5/dist/feather.min.js"></script>
